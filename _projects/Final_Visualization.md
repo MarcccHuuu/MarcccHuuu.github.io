@@ -1,7 +1,7 @@
 ---
 name: (Final Data Visualization) Will Covid_19 Coexist with Human-Beings Forever?
 tools: [Python, Altair, vega-lite]
-image: assets/pngs/final_vis_state_cases.png
+image: assets/pngs/final_confirmed_cases.png
 description: This is the final Data Visualization Project "Will Covid_19 Coexist with Human-Beings Forever?", using python, altair and vega-lite for interactive data visualization!
 custom_js:
   - vega.min
@@ -11,31 +11,27 @@ custom_js:
 ---
 
 
-# Final Project: Will Covid_19 Coexist with Human-Beings Forever?
+# Will Covid_19 Coexist with Human-Beings Forever?
+##### Group 3 
+##### Member: Henry Chen (tc30), Yizhan Xue (yizhanx2), Yichuan Hu (yh42), Yuxuan Jiang (yj26) 
 
+### Overview
+###### Covid-19 is caused by a virus called SARS-CoV-2. It is a member of the coronavirus family, which also includes common viruses that cause more serious but less frequent disorders. Coronaviruses, like many other respiratory viruses, spread swiftly by droplets that are emitted from the mouth or nose when breathing, coughing, sneezing, or speaking. Covid-19 disease was firstly discovered in December, 2019 in Wuhan, China. It's very infectious and has spread rapidly over the world. Nowadays, it's almost been three years since first discovered, the dsease is still spreading in most of the countries in the world. And it may raise the problem,will Covid-19 coexist with human-beings forever? 
 
-### Visualization 1 (No Interactivity)
-Description: the relationship of cloud_cover and mean of visibility when bfro happens (result: the more cloud_cover, the visibility goes down)  
-Encoding type: X - quantitative, Y - quantitative  
-Color scheme: None  
-Design: because when two variables pair well, using a scatter plot is a great way to show the relationship, so using a scatter chart to see if it's a positive or negative correlation between cloud_cover and visibility when bfro happens.  
-Data Transformations: the transformation for the data is that we aggregates the visibility data based on the cover_over, then calculate its mean to see how the relationship between visibility and cloud_cover is, when bfro happens.
+###### In order to dig into the topic further more, we searched all types of dataset online and decided to use the dataset called "United States COVID-19 Cases and Deaths by State over Time" from DATA.GOV, "time_series_covid19_deaths_global.csv", and "time_series_covid19_recovered_global.csv" from John Hopkins University CSSEGISandData. The CDC publishes daily online total figures of COVID-19 cases and deaths. Based on these most recent figures provided by states, territories, and other jurisdictions, data on the COVID-19 website and the CDC's COVID Data Tracker are used. 
 
-<vegachart schema-url="{{ site.baseurl }}/assets/json/scatterplot.json" style="width: 100%"></vegachart>
+### Visualization
 
-### Visualization 2 (Interactive)
-Description: the relationship of visibility and humidity when bfro happens and the corresponding bfro times in each state  
-Color scheme: the bin cell is aggregated by the count of records, the color bar represents different levels of occurance of bfro, shown in the cell.  
-Encoding type: in plot 1, X - quantitative, Y - quantitative; in plot 2, X - nominal, Y - quantitative.  
-Interactivity: select an area from the color map, and display the number of bfro in each state, which is not only focusing on one area, it can be selected for a part of areas, it can be one, two or more, so people can see more data and data distribution in the histogram.  
-Design: A color map is a great chart to show the number of bfro based on the visibility and humidity, and for the interaction perspective, select an area from the color map, and display the number of bfro in each state, a perfect chart is a histogram, therefore, it comes out the final design, to complete these two plots, because based on the humidity, visibility, state, and bfro data type, the encoding type in color map is quantitive and in the histogram, the x label is encoded as nominal and y label is encoded as quantitative.  
-*Quoted vega-lite code from Homework 9:  
-"{ "data":{"url":"https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_bcubcg_fall2022/main/data/bfro_reports_fall2022.csv"}, "mark": "rect", "height": 200, "width": 400, "encoding":{ "x":{"bin":{"maxbins":50},"field":"visibility", "type":"quantitative"}, "y":{"bin":{"maxbins":30}, "field":"humidity", "type":"quantitative"}, "color":{"aggregate":"count","type":"quantitative"} }" "{ "data": {"url": "https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_bcubcg_fall2022/main/data/bfro_reports_fall2022.csv"}, "mark":{"type": "bar", "color": "red"}, "height": 200, "width": 400, "encoding": { "x": {"field": "state", "type": "nominal"}, "y": {"aggregate": "count", "field": "state", "type": "quantitative"} } }"  
-*Modification for interactivity: adjust the plot size (smaller) to make them exists in one line and interact well. And to work with Altair, I delete the comment version of javascript and add "alt.Chart.from_dict" to work in the python environment. Last but not least, Add the interactive code part.  
-Data Transformations: Data Transformations: the transformation for the data is that we count the total occurance of bfro based on the cover_over and visbility data, then displays its total occurance in each state in the distogram to see a deeper relationship between the visibility and cloud_cover and bfro.
+#### Global Trending Analysis
+###### As we can see in these particular data visualizations below are the numbers of confirmed cases and death cases of Covid-19 by month from January 2020 to December, 2022. You may get confused by the great drop of number at the point of December, 2022. That is because the time this report was formed, it was just the very beginning of December and the number cannot prove anything.But still in the period between January 2020 and November 2022, we can get an estimate trend of Covid-19. In January 2020, some countries like China started to have cases. Then later, some other countries started to have cases as well. The curves shows very clear that it is gradually flatten. This means the cases and deaths numbers are dropping down gradually. From these two visualizations, we can conclude that the death rate of Covid is dropping very quick, but the Covid-19 seems to be coexisted with human-beings forever.  
+<vegachart schema-url="{{ site.baseurl }}/assets/json/countries_confirmed_lines.json" style="width: 100%"></vegachart>
+<vegachart schema-url="{{ site.baseurl }}/assets/json/countries_death_lines.json" style="width: 100%"></vegachart>
 
-<vegachart schema-url="{{ site.baseurl }}/assets/pngs/final_vis_state_cases.png" style="width: 100%"></vegachart>
+#### US Domestic Trending Analysis
 
+###### As we can see in the bubble plot below, it shows the new cases number of Covid-19 in United States within different states. In the graph, the bigger the bubble is, the bigger the number it represent case number is. Because of the difference in population, some big states like California, Texas and Florida always have the top new cases numbers. This fact is also reflected in the bar chart of sum of new cases below. Even though there are a lot of elements in the graph, we can still get an estimate trend of new cases count. For the data we have here, from March 2020 to October 2022, it some times increase and some times decrease and we don't see any significant decrease and increase trend of it. So after the analysis, we thought the Covid-19 diease is still going to be out there and may oexist with human beings forever.
+###### The most likely long-term result of Covid-19 is that the disease becomes endemic in significant portions of the world, continuously circulating among people but generating fewer occurrences of severe illness. COVID-19 may eventually turn into a minor pediatric sickness, similar to the four endemic human coronaviruses that cause the common cold, years or even decades from now.
+<vegachart schema-url="{{ site.baseurl }}/assets/json/final_dashboard.json" style="width: 100%"></vegachart>
 
 <!-- these are written in a combo of html and liquid --> 
 
