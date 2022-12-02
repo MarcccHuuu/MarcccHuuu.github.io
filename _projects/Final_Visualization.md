@@ -1,5 +1,5 @@
 ---
-name: Data Visualization for Week 10
+name: (Final Data Visualization) Will Covid_19 Coexist with Human-Beings Forever?
 tools: [Python, Altair, vega-lite]
 image: assets/pngs/final_vis_state_cases.png
 description: This is the final Data Visualization Project "Will Covid_19 Coexist with Human-Beings Forever?", using python, altair and vega-lite for interactive data visualization!
